@@ -1,19 +1,19 @@
-import express from "express";
-import bodyParser from "body-parser";
+import express from 'express';
+import bodyParser from 'body-parser';
+import usersRoute from './src/routes/users.js';
+import dbConnect from './src/config/db/index.js';
 
-import usersRoute from "./routes/users.js";
+dbConnect();
 
 const app = express();
 const PORT = 5000;
 
 app.use(bodyParser.json());
 
-app.use("/users", usersRoute);
+app.use('/users', usersRoute);
 
-app.get("/", (req, res) => {
-  res.send("Home");
+app.get('/', (req, res) => {
+    res.send('Home');
 });
 
-app.listen(PORT, () =>
-  console.log(`Server running on port: http://localhost:${PORT}`)
-);
+app.listen(PORT, () => console.log(`Server running on port: http://localhost:${PORT}`));
